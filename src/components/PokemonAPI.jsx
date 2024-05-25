@@ -31,6 +31,7 @@ function pickPokemon(input) {
   }
 
   console.log(tempObjectHolder);
+  return tempObjectHolder;
 }
 
 // call async function and create new object

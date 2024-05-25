@@ -3,7 +3,7 @@
 async function getPicture(searchItem) {
   try {
     const response = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=Zf0QL7k2j2O0uwHY5cpCXjxDeUPRcTjs&q=${searchItem}&limit=1&offset=0&rating=pg-13&lang=en&bundle=messaging_non_clips`,
+      `https://api.giphy.com/v1/gifs/search?api_key=Zf0QL7k2j2O0uwHY5cpCXjxDeUPRcTjs&q=${searchItem}&limit=1&offset=0&rating=r&lang=en&bundle=messaging_non_clips`,
       { mode: "cors" }
     );
 
@@ -19,10 +19,4 @@ async function getPicture(searchItem) {
   }
 }
 
-function displayResult(searchItem) {
-  getPicture(searchItem).then((json) => {
-    console.log(json);
-  });
-}
-
-export { displayResult };
+export { getPicture };
