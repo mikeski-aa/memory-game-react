@@ -1,4 +1,5 @@
 // function to call api
+// this function will recieve pokemon JSON
 
 async function fetchPokemonData() {
   try {
@@ -20,7 +21,7 @@ async function fetchPokemonData() {
 
 function logJSON() {
   fetchPokemonData().then((pokemon) => {
-    console.log(pokemon);
+    console.log(pokemon.results);
   });
 }
 
