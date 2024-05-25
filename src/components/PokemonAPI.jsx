@@ -1,3 +1,5 @@
+import { getUniqueArray } from "./RandomNumberPicker";
+
 // function to call api
 // this function will recieve pokemon JSON
 
@@ -19,9 +21,22 @@ async function fetchPokemonData() {
   }
 }
 
+// function for picking 8 pokemon
+function pickPokemon(input) {
+  let array = getUniqueArray();
+  let tempObjectHolder = [];
+
+  for (let x of array) {
+    tempObjectHolder.push(input[x].name);
+  }
+
+  console.log(tempObjectHolder);
+}
+
+// call async function and create new object
 function logJSON() {
   fetchPokemonData().then((pokemon) => {
-    console.log(pokemon.results);
+    pickPokemon(pokemon.results);
   });
 }
 

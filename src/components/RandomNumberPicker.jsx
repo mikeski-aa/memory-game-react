@@ -12,10 +12,24 @@ function getUniqueArray() {
   let uniqueArray = [];
 
   for (let i = 0; i < 8; i++) {
-    uniqueArray.push(generateRandomNumb());
+    if (uniqueArray.length < 1) {
+      uniqueArray.push(generateRandomNumb());
+    } else {
+      let tempNumber = generateRandomNumb();
+
+      if (!uniqueArray.includes(tempNumber)) {
+        uniqueArray.push(tempNumber);
+      } else {
+        while (uniqueArray.includes(tempNumber)) {
+          tempNumber = generateRandomNumb();
+        }
+
+        uniqueArray.push(tempNumber);
+      }
+    }
   }
 
-  console.log(uniqueArray);
+  return uniqueArray;
 }
 
 export { getUniqueArray };
