@@ -23,7 +23,7 @@ async function fetchPokemonData() {
 }
 
 // function for picking 8 pokemon
-function pickPokemon(input) {
+function pickPokemon(input, setCardState) {
   let array = getUniqueArray();
   let tempObjectHolder = [];
 
@@ -32,13 +32,15 @@ function pickPokemon(input) {
   }
 
   console.log(tempObjectHolder);
+  setCardState(tempObjectHolder);
   return tempObjectHolder;
 }
 
 // function creates a neat pokemon object to be used as state
+// converts id string to int
 function createObject(input) {
   const pokemonObject = {
-    id: splitUrl(input.url),
+    id: +splitUrl(input.url),
     name: input.name,
     picUrl: createImgUrl(splitUrl(input.url)),
   };
@@ -47,10 +49,10 @@ function createObject(input) {
 }
 
 // call async function and create new object
-function logJSON() {
+function fetchCardsToBeUsed(setCardState) {
   fetchPokemonData().then((pokemon) => {
-    pickPokemon(pokemon.results);
+    pickPokemon(pokemon.results, setCardState);
   });
 }
 
-export { logJSON };
+export { fetchCardsToBeUsed };
