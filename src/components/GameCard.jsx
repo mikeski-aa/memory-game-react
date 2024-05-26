@@ -1,15 +1,13 @@
+import "../styles/GameCardStyle.css";
+
 // what an individual gamecard should look like
 
-function CreateGameCard(imageSource, cardName) {
+function CreateGameCard({ imageSource, cardName }) {
   return (
-    <>
-      <div className="card">
-        <img src={imageSource}></img>
-        <div>
-          <h2>{cardName}</h2>
-        </div>
-      </div>
-    </>
+    <div className="card">
+      <img src={imageSource} className="cardImg"></img>
+      <span className="cardHeading">{cardName}</span>
+    </div>
   );
 }
 
