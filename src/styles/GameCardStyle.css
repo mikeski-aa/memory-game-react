@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 255, 255, 0.808);
-  max-width: fit-content;
+  max-width: inherit;
+  max-height: inherit;
   text-align: center;
   border-radius: 12px;
   border: 5px solid navy;
 }
 
 .cardImg {
-  max-width: 20vw;
+  width: inherit;
 }
 
 .cardHeading {

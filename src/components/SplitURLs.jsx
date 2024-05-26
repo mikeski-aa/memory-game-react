@@ -13,7 +13,7 @@ function splitUrl(inputUrl) {
   } else if (newSplit.length === 2) {
     newSplit = "0" + newSplit;
   }
-  console.log(newSplit);
+
   return newSplit;
 }
 
