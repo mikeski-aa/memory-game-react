@@ -2,16 +2,19 @@ import { useState } from "react";
 import { logJSON } from "./components/PokemonAPI";
 import { getUniqueArray } from "./components/RandomNumberPicker";
 import { displaySearchResult } from "./components/GiphyAPI";
-import { splitUrl } from "./components/GetImages";
+import { splitUrl, createImgUrl } from "./components/SplitURLs";
 import "./App.css";
 
 function App() {
   const [testState, setTestState] = useState("dddd");
 
   function test() {
-    displaySearchResult("motorbike", setTestState, testState);
+    // displaySearchResult("motorbike", setTestState, testState);
     logJSON();
-    splitUrl("https://pokeapi.co/api/v2/pokemon/5/");
+
+    setTestState(
+      createImgUrl(splitUrl("https://pokeapi.co/api/v2/pokemon/2/"))
+    );
   }
 
   return (

@@ -1,4 +1,5 @@
 import { getUniqueArray } from "./RandomNumberPicker";
+import { splitUrl, createImgUrl } from "./SplitURLs";
 
 // function to call api
 // this function will recieve pokemon JSON
@@ -27,16 +28,19 @@ function pickPokemon(input) {
   let tempObjectHolder = [];
 
   for (let x of array) {
-    tempObjectHolder.push(input[x].name);
+    tempObjectHolder.push(createObject(input[x]));
   }
 
   console.log(tempObjectHolder);
   return tempObjectHolder;
 }
 
+// function creates a neat pokemon object to be used as state
 function createObject(input) {
   const object = {
-    name: input,
+    id: splitUrl(input.url),
+    name: input.name,
+    picUrl: createImgUrl(splitUrl(input.url)),
   };
 
   return object;

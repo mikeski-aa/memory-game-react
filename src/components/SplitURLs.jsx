@@ -15,9 +15,11 @@ function splitUrl(inputUrl) {
   return newSplit;
 }
 
-function createImgUrl(splitUrl) {
-  let imageUrl =
-    "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/001.png";
+// this function takes newly created index and uses it to create relevant image url
+function createImgUrl(pokemonIndex) {
+  let imageUrl = `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${pokemonIndex}.png`;
+
+  return imageUrl;
 }
 
 export { createImgUrl, splitUrl };
