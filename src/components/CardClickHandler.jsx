@@ -1,3 +1,5 @@
+import { ShuffleArray } from "./ShuffleArray";
+
 // function to handle clicking the card
 // clicking a card should change the prevSelected from false to true.
 // if true is clicked, game over.
@@ -25,7 +27,7 @@ function CardClickHandler(
     }
   }
 
-  setStatus(copyOfState);
+  setStatus(ShuffleArray(copyOfState));
 }
 
 export { CardClickHandler };
