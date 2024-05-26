@@ -37,13 +37,13 @@ function pickPokemon(input) {
 
 // function creates a neat pokemon object to be used as state
 function createObject(input) {
-  const object = {
+  const pokemonObject = {
     id: splitUrl(input.url),
     name: input.name,
     picUrl: createImgUrl(splitUrl(input.url)),
   };
 
-  return object;
+  return pokemonObject;
 }
 
 // call async function and create new object
