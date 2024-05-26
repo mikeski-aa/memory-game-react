@@ -1,4 +1,5 @@
 // this function is to fetch data from Giphy's API
+// this will likely not be needed as I will not be using Giphy's API for this project
 
 async function getPicture(searchItem) {
   try {
@@ -19,4 +20,10 @@ async function getPicture(searchItem) {
   }
 }
 
-export { getPicture };
+function displaySearchResult(searchItem, setState, currentState) {
+  getPicture(searchItem).then((json) => {
+    setState(json.data[0].images.original.url);
+  });
+}
+
+export { displaySearchResult };

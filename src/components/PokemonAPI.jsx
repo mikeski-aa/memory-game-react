@@ -34,6 +34,14 @@ function pickPokemon(input) {
   return tempObjectHolder;
 }
 
+function createObject(input) {
+  const object = {
+    name: input,
+  };
+
+  return object;
+}
+
 // call async function and create new object
 function logJSON() {
   fetchPokemonData().then((pokemon) => {

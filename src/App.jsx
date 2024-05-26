@@ -1,27 +1,25 @@
 import { useState } from "react";
+import { logJSON } from "./components/PokemonAPI";
+import { getUniqueArray } from "./components/RandomNumberPicker";
+import { displaySearchResult } from "./components/GiphyAPI";
+import { splitUrl } from "./components/GetImages";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [testState, setTestState] = useState("dddd");
+
+  function test() {
+    displaySearchResult("motorbike", setTestState, testState);
+    logJSON();
+    splitUrl("https://pokeapi.co/api/v2/pokemon/5/");
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank"></a>
-        <a href="https://react.dev" target="_blank"></a>
-      </div>
-      <h1>Vite + React</h1>
+      <img src={testState}></img>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => test()}>Set state button </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
