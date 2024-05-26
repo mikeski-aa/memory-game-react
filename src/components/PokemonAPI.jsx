@@ -43,6 +43,7 @@ function createObject(input) {
     id: +splitUrl(input.url),
     name: input.name,
     picUrl: createImgUrl(splitUrl(input.url)),
+    prevSelected: false,
   };
 
   return pokemonObject;

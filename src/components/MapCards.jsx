@@ -1,18 +1,28 @@
 import { Fragment } from "react";
 import { CreateGameCard } from "./GameCard";
+import { CardClickHandler } from "./CardClickHandler";
 
 // this function will go through the state and map cards
 
-function MapDisplayCards({ currentState }) {
+function MapDisplayCards({ currentState, setCurrState, setGameStatus }) {
   const displayCards = currentState.map((card) => (
     <Fragment key={card.id}>
-      <CreateGameCard imageSource={card.picUrl} cardName={card.name} />
+      <CreateGameCard
+        imageSource={card.picUrl}
+        cardName={card.name}
+        handleAction={() =>
+          CardClickHandler(
+            card.prevSelected,
+            card.id,
+            currentState,
+            setCurrState,
+            setGameStatus
+          )
+        }
+      />
     </Fragment>
   ));
 
-  //   console.log("logging MapDisplayCard function");
-  //   console.log(displayCards);
-  //   console.log(currentState[0].name);
   return <div className="cardList">{displayCards}</div>;
 }
 
