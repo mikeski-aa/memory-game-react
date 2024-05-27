@@ -3,6 +3,7 @@ import { MapDisplayCards } from "./components/MapCards";
 import "./App.css";
 import "../src/styles/CardListStyle.css";
 import { PlayGame } from "./components/PlayGame";
+import { NewButton } from "./components/ButtonComp";
 
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState([]);
@@ -14,9 +15,12 @@ function App() {
 
   return (
     <>
-      <img></img>
-      <div className="notCard">
-        <button onClick={() => PlayGame(setCurrentPokemon)}>Play game!</button>
+      <div className="buttons">
+        <NewButton
+          btnClass="playBtn"
+          btnAction={() => PlayGame(setCurrentPokemon)}
+          btnText="Play Game!"
+        />
       </div>
       <MapDisplayCards
         currentState={currentPokemon}
