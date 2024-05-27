@@ -11,6 +11,9 @@ body {
 .score.ini {
   display: none;
 }
+.bestScore.ini {
+  display: none;
+}
 
 .howToPlay.game {
   display: none;
@@ -26,7 +29,8 @@ body {
   font-size: 2rem;
 }
 
-.score {
+.score,
+.bestScore {
   font-size: 2rem;
   text-align: center;
 }

@@ -1,5 +1,6 @@
 import { ShuffleArray } from "./ShuffleArray";
 import { PlayGame } from "./PlayGame";
+import { useEffect } from "react";
 
 // function to handle clicking the card
 // clicking a card should change the prevSelected from false to true.
@@ -23,6 +24,7 @@ function CardClickHandler(
   }
 
   let copyOfState = [...currentState];
+  let temp = currScore;
 
   for (let i = 0; i < copyOfState.length; i++) {
     if (copyOfState[i].id === id) {
@@ -33,7 +35,6 @@ function CardClickHandler(
     }
   }
 
-  let temp = currScore;
   temp += 1;
   setScore(temp);
   setStatus(ShuffleArray(copyOfState));

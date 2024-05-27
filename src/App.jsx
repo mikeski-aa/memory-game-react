@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapDisplayCards } from "./components/MapCards";
 import "./App.css";
 import "../src/styles/CardListStyle.css";
@@ -10,6 +10,14 @@ function App() {
   const [currentPokemon, setCurrentPokemon] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [displayStatus, setDisplayStatus] = useState("ini");
+  const [bestScore, setBestScore] = useState(0);
+
+  // use effect is needed here to update the value of a mounted component
+  useEffect(() => {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+  });
 
   return (
     <>
@@ -28,6 +36,9 @@ function App() {
         <div
           className={`score ${displayStatus}`}
         >{`Your score is: ${currentScore}`}</div>
+        <div
+          className={`bestScore ${displayStatus}`}
+        >{`Best score: ${bestScore}`}</div>
         <MapDisplayCards
           currentState={currentPokemon}
           setCurrState={setCurrentPokemon}
