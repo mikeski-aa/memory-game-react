@@ -4,7 +4,14 @@ import { CardClickHandler } from "./CardClickHandler";
 
 // this function will go through the state and map cards
 
-function MapDisplayCards({ currentState, setCurrState, setGameStatus }) {
+function MapDisplayCards({
+  currentState,
+  setCurrState,
+  setScore,
+  currScore,
+  cardState,
+  setDisplay,
+}) {
   const displayCards = currentState.map((card) => (
     <Fragment key={card.id}>
       <CreateGameCard
@@ -16,7 +23,10 @@ function MapDisplayCards({ currentState, setCurrState, setGameStatus }) {
             card.id,
             currentState,
             setCurrState,
-            setGameStatus
+            setScore,
+            currScore,
+            cardState,
+            setDisplay
           )
         }
       />

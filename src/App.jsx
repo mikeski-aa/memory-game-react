@@ -4,50 +4,39 @@ import "./App.css";
 import "../src/styles/CardListStyle.css";
 import { PlayGame } from "./components/PlayGame";
 import { NewButton } from "./components/ButtonComp";
-import { GameSettings } from "./components/ModalSettings";
-import { toggleSettingsModal } from "./components/ToggleSettingsModal";
+import "../src/styles/AppStyle.css";
 
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState([]);
-  const [gameOver, setGameOver] = useState([false]);
-  const [settingsModal, setSettingsModal] = useState("hide");
-  const [cardDisplay, setCardDisplay] = useState("8");
   const [currentScore, setCurrentScore] = useState(0);
-
-  if (gameOver === true) {
-    alert("ITS OVER. YOU LOST. THATS IT GG.");
-  }
+  const [displayStatus, setDisplayStatus] = useState("ini");
 
   return (
     <>
-      <div className="buttons">
-        <NewButton
-          btnClass="playBtn"
-          btnAction={() => PlayGame(setCurrentPokemon)}
-          btnText="Play Game!"
+      <div className="main">
+        <div className={`buttons ${displayStatus}`}>
+          <NewButton
+            btnClass="playBtn"
+            btnAction={() => PlayGame(setCurrentPokemon, setDisplayStatus)}
+            btnText="Play Game!"
+          />
+        </div>
+        <div className={`howToPlay ${displayStatus}`}>
+          How to play: Memorise the cards. Click only the cards you have not
+          previously selected!
+        </div>
+        <div
+          className={`score ${displayStatus}`}
+        >{`Your score is: ${currentScore}`}</div>
+        <MapDisplayCards
+          currentState={currentPokemon}
+          setCurrState={setCurrentPokemon}
+          setScore={setCurrentScore}
+          currScore={currentScore}
+          cardState={setCurrentPokemon}
+          setDisplay={setDisplayStatus}
         />
-        {/* <NewButton btnClass="howToPlay" btnText="How to play" />
-        <NewButton
-          btnClass="settingsBtn"
-          btnText="Settings"
-          btnAction={() => toggleSettingsModal(settingsModal, setSettingsModal)}
-        /> */}
       </div>
-      <div className="score">{currentScore}</div>
-      <MapDisplayCards
-        currentState={currentPokemon}
-        setCurrState={setCurrentPokemon}
-        setGameStatus={setGameOver}
-      />
-      {/* <div className="modal">
-        <GameSettings
-          currentValue={cardDisplay}
-          displayModal={settingsModal}
-          setCardValue={setCardDisplay}
-          setModal={setSettingsModal}
-          currModal={settingsModal}
-        />
-      </div> */}
     </>
   );
 }

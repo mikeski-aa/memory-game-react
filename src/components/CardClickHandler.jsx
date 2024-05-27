@@ -1,4 +1,5 @@
 import { ShuffleArray } from "./ShuffleArray";
+import { PlayGame } from "./PlayGame";
 
 // function to handle clicking the card
 // clicking a card should change the prevSelected from false to true.
@@ -9,11 +10,16 @@ function CardClickHandler(
   id,
   currentState,
   setStatus,
-  setGameStatus
+  setScore,
+  currScore,
+  cardState,
+  setDisplay
 ) {
   if (selectStatus === true) {
-    console.log("you clicked this already");
-    setGameStatus(true);
+    alert(`Game over! You got ${currScore} / 8 right!`);
+    PlayGame(cardState, setDisplay);
+    setScore(0);
+    return;
   }
 
   let copyOfState = [...currentState];
@@ -27,6 +33,9 @@ function CardClickHandler(
     }
   }
 
+  let temp = currScore;
+  temp += 1;
+  setScore(temp);
   setStatus(ShuffleArray(copyOfState));
 }
 
